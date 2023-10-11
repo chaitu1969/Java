@@ -1,0 +1,27 @@
+                  Generic
+-----------------------------------------
+ -> The use of generic is very useful while Implementing a method for multiple dataTypes
+ 
+ -> The syntax for generic is add "<T>" to the class 
+ 	EX :: class Demo<T>
+ 	
+ -> we can use multiple generic at a time
+ 	class Demo<T,R>
+
+ 
+ -> Syntax for creation of Object
+ 
+ 	className<Data-Type> variableName = new className<>();
+ 	
+ -> we can have chain generic
+	
+	ClassName< InnerClass <para1,para2>, para2>  variableName = new ClassName<>();
+	
+	InnerClass < para1, para2 > InnerVariable = new ClassName<>();
+	
+	Accessing InnerClass values
+	
+		variableName.para1.para1;
+		
+		VariableName.para1.para2;
+	
