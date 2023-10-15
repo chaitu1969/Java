@@ -1,0 +1,8 @@
+Document
+--------
+ LinkedList
+	-> Linked lists provide efficient dynamic memory allocation, making them well-suited for situations where the size 
+	of the data structure needs to be constantly changing. This is because linked lists allow for efficient insertion 
+	and deletion of elements at any position within the list without requiring the entire structure to be resized or 
+	moved.
+	
