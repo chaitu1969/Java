@@ -2,6 +2,9 @@ package linkedList;
 
 import java.util.*;
 
+import java.util.LinkedList;
+
+
 public class LinkedListUse2 {
 	
 	// Take input for LinkedList
@@ -151,6 +154,51 @@ public class LinkedListUse2 {
 		
 	}
 	
+	//Find node in linkedlist using recusion
+	public static int FindNode(Node<Integer> head, int data) {
+		if(head == null) {
+			return -1;
+		}
+		if(head.data == data)
+			return 0;
+		
+		int ans = FindNode(head.next,data);
+		
+		if(ans == -1)
+			return -1;
+		return ans+1;
+	}
+
+	//Delete N node for every n nodes
+	
+	public static Node<Integer> deleteNnodes(Node<Integer> head, int N, int r){
+		Node<Integer> temp = head, t;
+		if(head == null)
+			return head;
+		if(N == 0)
+			return null;
+		if(r == 0)
+			return head;
+		int count;
+		
+		while(temp != null) {
+			for(count=1; count < N && temp!=null ; count++) {
+				temp = temp.next;
+			}
+			
+			if(temp == null)
+				return head;
+			t= temp.next;
+			for(int i = 0; i<r && t!=null; i++) {
+				t = t.next;
+			}
+			temp.next = t;
+			temp = t;
+		}
+		return head;
+	}
+	
+	
 	public static void main(String[] args) {
 //		Node<Integer> head = TakeInput();
 //		print(head);
@@ -163,15 +211,18 @@ public class LinkedListUse2 {
 //		node = reverseLL(node);
 //		print(node);
 		
-		Node<Integer> n1 = TakeInput();
-		print(n1);
-		System.out.println();
-		Node<Integer> n2 = TakeInput();
-		print(n2);
-		System.out.println();
-		Node<Integer> node = mergeSort(n1,n2);
-		print(node);
+//		Node<Integer> n1 = TakeInput();
+//		print(n1);
+//		System.out.println();
+//		Node<Integer> n2 = TakeInput();
+//		print(n2);
+//		System.out.println();
+//		Node<Integer> node = mergeSort(n1,n2);
+//		print(node);
+//		
 		
+//		LinkedList<Integer> list = new LinkedList<>();
+//		list.
 		
 		
 	}
