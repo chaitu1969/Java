@@ -14,7 +14,6 @@ public class StackCollection {
 		System.out.println(stack.pop());
 		System.out.println(stack.lastElement());
 		System.out.println(stack.capacity());
-		stack.ca
 		
 	}
 }
