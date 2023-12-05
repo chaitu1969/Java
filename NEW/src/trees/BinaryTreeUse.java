@@ -5,6 +5,88 @@ import java.util.Scanner;
 public class BinaryTreeUse {
 	
 	
+	// Checking Tree as isBSTreturn better
+	public static isBSTreturn isBSTbetter(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			isBSTreturn BSTreturn = new isBSTreturn(Integer.MAX_VALUE, Integer.MIN_VALUE, true);
+			return BSTreturn;
+		}
+		isBSTreturn left = new isBSTbetter(root.left);
+		isBSTreturn right = new isBSTbetter(root.right);
+		
+		int min = Math.min(root.data, Math.min(left.min, right.min));
+		int max = Math.max(root.data, Math.max(left.max, right.max));
+		boolean isBST = true;
+		
+		if(left.max >= root.data ) {
+			isBST = false;
+		}
+		if(right.min < root.data ) {
+			isBST = false;
+		}
+		
+		if(!left.isBST) {
+			isBST = false;
+		}
+		
+		if(!right.isBST) {
+			isBST = false;
+		}
+		
+		isBSTreturn ans = new isBSTreturn(min, max, isBST);
+		
+		return ans;
+	}
+	
+	
+	// Checking Tree as isBST
+	
+	public static int minimum(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return Integer.MAX_VALUE;
+		}
+		int leftMin = minimum(root.left);
+		int rightMin = minimum(root.right);
+		
+		return Math.min(root.data,Math.min(leftMin, rightMin));
+	}
+	
+	public static int maximum(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return Integer.MIN_VALUE;
+		}
+		int leftMax = maximum(root.left);
+		int rightMax = maximum(root.right);
+		
+		return Math.max(root.data, Math.max(leftMax, rightMax));
+	}
+	
+	public static boolean isBST(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return true;
+		}
+		
+		int leftMAX = maximum(root.left);
+		if(leftMAX >= root.data) {
+			return false;
+		}
+		
+		int rightMIN = minimum(root.right);
+		if(rightMIN < root.data) {
+			return false;
+		}
+		boolean left = isBST(root.left);
+		boolean right = isBST(root.right);
+		
+		return left && right;
+		
+		
+		
+			
+		
+	}
+	
+	
 	// Taking input in level wise
 	public static BinaryTreeNode<Integer> takeInputLevelWise() {
 		Scanner s = new Scanner(System.in);
