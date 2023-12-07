@@ -1,4 +1,5 @@
 package trees;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -109,7 +110,7 @@ public class BinaryTreeUse {
 				front.left = leftChid;
 				pendingChildren.add(leftChid);
 			}
-			System.out.print("tner the right child of "+front.data + " : ");
+			System.out.print("Enter the right child of "+front.data + " : ");
 			int right = s.nextInt();
 			if(right != -1) {
 				BinaryTreeNode<Integer> rightChild = new BinaryTreeNode<Integer>(right);
@@ -355,6 +356,36 @@ public class BinaryTreeUse {
 //		}
 	}
 	
+	public static ArrayList<Integer> nodeToRootPath(BinaryTreeNode<Integer> root, int x){
+		if(root == null) {
+			return null;
+		}
+		
+		if(root.data == x) {
+			ArrayList<Integer> output = new ArrayList<Integer>();
+			output.add(root.data);
+			return output;
+		}
+		
+		ArrayList<Integer> leftOutput = nodeToRootPath(root.left, x);
+		
+		if(leftOutput != null) {
+			leftOutput.add(root.data);
+			return leftOutput;
+		}
+		
+		ArrayList<Integer> rightOutput = nodeToRootPath(root.right, x);
+		
+		if(rightOutput != null)
+		{
+			rightOutput.add(root.data);
+			return rightOutput;
+		}
+		
+		return null;
+	}
+	
+	
 	public static void main(String[] args) {
 //		BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
 //		BinaryTreeNode<Integer> rootLeft = new BinaryTreeNode<>(2);
@@ -368,10 +399,14 @@ public class BinaryTreeUse {
 //		rootRight.left = threeLeft;
 //		BinaryTreeNode<Integer> root = TakeInputBetter(true,0,true);
 		BinaryTreeNode<Integer> root = takeInputLevelWise();
-		printTree(root);
+//		printTree(root);
 		
-		int count = numOfNode(root);
-		System.out.println(count);
+//		int count = numOfNode(root);
+//		System.out.println(count);
+		ArrayList<Integer> path = nodeToRootPath(root, 8);
+		for(int i : path) {
+			System.out.print(i+" -> ");
+		}
 		
 
 		
